@@ -1,6 +1,6 @@
 package com.qzy.mab.controller.user;
 
-import com.qzy.mab.entity.User;
+import com.qzy.mab.entity.user.User;
 import com.qzy.mab.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

@@ -3,7 +3,7 @@
 <mapper namespace="com.qzy.mab.mapper.UserMapper">
 
     <!-- 查询所有 -->
-    <select id="findAll" resultType="com.qzy.mab.entity.User">
+    <select id="findAll" resultType="com.qzy.mab.entity.user.User">
         SELECT * FROM user
     </select>
 </mapper>

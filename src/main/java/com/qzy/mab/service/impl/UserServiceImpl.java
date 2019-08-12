@@ -1,6 +1,6 @@
 package com.qzy.mab.service.impl;
 
-import com.qzy.mab.entity.User;
+import com.qzy.mab.entity.user.User;
 import com.qzy.mab.mapper.UserMapper;
 import com.qzy.mab.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
