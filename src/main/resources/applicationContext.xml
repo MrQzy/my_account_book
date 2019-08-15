@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+    <bean class="com.qzy.mab.config.AuthenticFactory">
+        <property name="authenticationConfig">
+            <bean class="com.qzy.mab.config.AuthenticationConfig">
+                <!--把 cookieName改为XDT_PLATFORM，解决从其它平台登录，抛出当前店铺不存在的异常-->
+                <property name="cookieName" value="MAB_PLATFORM"/>
+                <property name="loginUrl" value="/auth/login"/>
+                <property name="excludeUrls"
+                          value="^/swagger+,^/v2/api-docs$,^/health$,^/swagger-resources$,^/auth/login$,^/auth/logout$,.+\.png,.+\.jpe?g,.+\.gif,.+\.svg,.+\.woff,.+\.woff2,.+\.ttf,.+\.eot,.+\.ico,.+\.html,.+\.js,.+\.css,.+\.map,/menuRole/findUserMenuTree"/>
+                <property name="platformId" value="1"/>
+                <property name="encoding" value="UTF-8"/>
+                <property name="salt" value="mab123"/>
+                <!--                <property name="source" value="40046"/>-->
+                <!--cookie写入二级域名下-->
+                <property name="domain" value="together.com"/>
+
+            </bean>
+        </property>
+    </bean>
+    <mvc:interceptors>
+        <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
+        <bean class="com.qzy.mab.interceptor.WebAuthenticationHandler"/>
+    </mvc:interceptors>
+</beans>
